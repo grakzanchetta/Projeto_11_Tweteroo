@@ -27,11 +27,7 @@ app.post("/tweets", (request, response) => {
 })
 
 app.get("/tweets", (request, response) => {
-    if(tweets.length <= 10){
-        response.send([...tweets].reverse());
-    } else {
         response.send([...tweets].reverse().splice(0, 10));
-    }
 })
 
 app.listen(5000)
