@@ -14,4 +14,24 @@ app.post("/sign-up", (request, response) => {
     response.send("Ok");
 })
 
+app.post("/tweets", (request, response) => {
+    const body = request.body;
+    const {username, tweet} = body;
+    const {avatar} = users.find(user => user.username === username);
+    tweets.push({
+        username,
+        avatar,
+        tweet
+    })
+    response.send("Ok");
+})
+
+app.get("/tweets", (request, response) => {
+    if(tweets.length <= 10){
+        response.send(tweets);
+    } else {
+        response.send(tweets);
+    }
+})
+
 app.listen(5000)
