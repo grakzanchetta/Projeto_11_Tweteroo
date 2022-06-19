@@ -1,13 +1,17 @@
-import express from "express";
-import chalk from "chalk";
 import cors from "cors";
-
+import express, {json} from "express";
 
 const app = express();
+app.use(json());
+app.use(cors());
 
+const tweets = [];
+const users = [];
 
-
-
-app.listen(5000, () => {
-    console.log(chalk.bold.green('Servidor Online'))
+app.post("/sign-up", (request, response) => {
+    const body = request.body;
+    users.push(body);
+    response.send("Ok");
 })
+
+app.listen(5000)
